@@ -25,17 +25,17 @@ object Main {
   def balance(chars: List[Char]): Boolean = {
     def balanceIter(acc : Int, chars : List[Char]): Boolean = {
       if (chars.isEmpty) {
-        return acc == 0
+        acc == 0
       } else {
         if(acc == -1) {
-          return false
+          false
         } else {
           if(chars.head == '(') {
-            return balanceIter(acc + 1, chars.tail)
+            balanceIter(acc + 1, chars.tail)
           } else if(chars.head == ')') {
-            return balanceIter(acc - 1, chars.tail)
+            balanceIter(acc - 1, chars.tail)
           } else {
-            return balanceIter(acc, chars.tail)
+            balanceIter(acc, chars.tail)
           }
         }
       }
@@ -48,11 +48,11 @@ object Main {
    */
   def countChange(money: Int, coins: List[Int]): Int = {
     if(money == 0) {
-      return 1
+      1
     } else if(money < 0 || coins.isEmpty) {
-      return 0
+      0
     } else {
-      return countChange(money - coins.head, coins) + countChange(money, coins.tail)
+      countChange(money - coins.head, coins) + countChange(money, coins.tail)
     }
   }
 }
